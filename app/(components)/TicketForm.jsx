@@ -44,8 +44,8 @@ const TicketForm = ({ ticket }) => {
         throw new Error("Failed to Ceate ticket");
       }
     }
-    router.refresh();
     router.push("/");
+    router.refresh();
   };
 
   const startingTicketData = {
