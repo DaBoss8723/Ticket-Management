@@ -4,7 +4,8 @@ const getBaseUrl = () => {
   // For Vercel production
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   // For custom domain on Vercel
-  if (process.env.NEXT_PUBLIC_VERCEL_URL) return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  if (process.env.NEXT_PUBLIC_VERCEL_URL)
+    return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
   // Fallback for local development
   return process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 };
