@@ -1,0 +1,26 @@
+{
+  "name": "ticket-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "10.4.23",
+    "eslint": "^10.0.1",
+    "eslint-config-next": "^12.0.4",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.1.2",
+    "next": "^16.1.6",
+    "postcss": "8.5.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwindcss": "^4.1.18"
+  }
+}
