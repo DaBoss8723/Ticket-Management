@@ -1,14 +1,19 @@
 import TicketCard from "./(components)/TicketCard";
 
 const getBaseUrl = () => {
+  // For Vercel production
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  if (process.env.NEXT_PUBLIC_URL) return process.env.NEXT_PUBLIC_URL;
-  return "http://localhost:3000";
+  // For custom domain on Vercel
+  if (process.env.NEXT_PUBLIC_VERCEL_URL) return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+  // Fallback for local development
+  return process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 };
 
 const getTickets = async () => {
   try {
-    const res = await fetch(`${getBaseUrl()}/api/Tickets`, {
+    const baseUrl = getBaseUrl();
+    console.log("Fetching tickets from:", `${baseUrl}/api/Tickets`);
+    const res = await fetch(`${baseUrl}/api/Tickets`, {
       cache: "no-store",
     });
 

@@ -19,33 +19,44 @@ const TicketForm = ({ ticket }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (EDITMODE) {
-      const res = await fetch(`/api/Tickets/${ticket._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ formData }),
-      });
+    try {
+      if (EDITMODE) {
+        const res = await fetch(`/api/Tickets/${ticket._id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ formData }),
+        });
 
-      if (!res.ok) {
-        throw new Error("Failed to Update ticket");
-      }
-    } else {
-      const res = await fetch("/api/Tickets", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ formData }),
-      });
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          console.error("Update failed:", res.status, errorData);
+          alert("Failed to update ticket. Please try again.");
+          return;
+        }
+      } else {
+        const res = await fetch("/api/Tickets", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ formData }),
+        });
 
-      if (!res.ok) {
-        throw new Error("Failed to Ceate ticket");
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          console.error("Create failed:", res.status, errorData);
+          alert("Failed to create ticket. Please try again.");
+          return;
+        }
       }
+      router.push("/");
+      router.refresh();
+    } catch (error) {
+      console.error("Error submitting ticket:", error);
+      alert("An error occurred. Please try again.");
     }
-    router.push("/");
-    router.refresh();
   };
 
   const startingTicketData = {
