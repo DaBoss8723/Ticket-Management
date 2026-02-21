@@ -8,12 +8,9 @@ const getBaseUrl = () => {
 
 const getTickets = async () => {
   try {
-    const res = await fetch(
-      `${getBaseUrl()}/api/Tickets`,
-      {
-        cache: "no-store",
-      },
-    );
+    const res = await fetch(`${getBaseUrl()}/api/Tickets`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       console.log("API returned error:", res.status);
