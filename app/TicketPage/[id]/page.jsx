@@ -1,8 +1,6 @@
 import TicketForm from "@/app/(components)/TicketForm";
 
 const getBaseUrl = () => {
-  // For Vercel production
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
   // For custom domain on Vercel
   if (process.env.NEXT_PUBLIC_VERCEL_URL)
     return `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
