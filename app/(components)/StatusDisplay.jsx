@@ -3,6 +3,7 @@ const StatusDisplay = ({ status }) => {
     let color = "bg-slate-700";
     switch (status.toLowerCase()) {
       case "done":
+      case "completed":
         color = "bg-green-200";
         return color;
       case "in progress":
@@ -18,9 +19,8 @@ const StatusDisplay = ({ status }) => {
   return (
     <span
       className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-black ${getColor(
-        status
-      )}`}
-    >
+        status,
+      )}`}>
       {status}
     </span>
   );
