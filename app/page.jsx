@@ -37,7 +37,7 @@ const Dashboard = async () => {
   console.log("Tickets array:", tickets);
 
   const uniqueCategories = [
-    ...new Set(tickets?.map(({ category }) => category)),
+    ...new Set(tickets?.map(({ category }) => cgiategory)),
   ];
   console.log("Unique categories:", uniqueCategories);
 
